@@ -20,4 +20,4 @@
 
 </head>
 <body class="container">
-<?php include('../includes/nav.php') ?>
+<?php include('includes/nav.php') ?>
