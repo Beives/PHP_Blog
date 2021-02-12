@@ -1,7 +1,7 @@
-<?php include('includes/header.php')?>
-<?php include('includes/nav.php') ?>
+<?php include('../includes/header.php')?>
 
-<div class="col-md-11 bg-light">
+
+<div class="col-xl-11 bg-light">
     asd
 </div>
     

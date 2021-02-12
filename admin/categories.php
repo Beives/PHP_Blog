@@ -1,31 +1,16 @@
 <?php 
     include('includes/header.php');
-    include('includes/nav.php');
+    include('includes/functions.php');
+?>
 
-    if (isset($_POST['uploadSubmit'])) {
-        $query = "INSERT INTO categories (cat_title) VALUES ('".$_POST['cat_name']."')";
-        mysqli_query($conn,$query);
-    }
-
-    if (isset($_GET['deleteid'])) {
-        $deleteQuery = "DELETE FROM categories WHERE cat_id=".$_GET['deleteid'];
-        mysqli_query($conn,$deleteQuery);
-    }
-
-    if (isset($_POST['updateSubmit'])) {
-        $updateQuery = "UPDATE categories SET cat_title='{$_POST['cat_update_name']}' WHERE cat_id = {$_POST['updateId']}";
-        mysqli_query($conn,$updateQuery);
-    }
- ?>
-
-<div class="col-md-11 bg-light">
+<div class="col-xl-11 bg-light">
     <div class="row">
         <div class="col-sm-5">
             <div class="card">
                 <div class="card text-center">
                     <div class="card-header">Add new category</div>
                     <div class="card-body">
-                        <form action="categories.php" method="post">
+                        <form action="includes/controllers.php" method="post">
                             <div class="form-group">
                                 <label for="cat_name">Category title</label>
                                 <input type="text" class="form-control" name="cat_name">
@@ -41,7 +26,7 @@
                 <div class="card text-center">
                     <div class="card-header">Edit category</div>
                     <div class="card-body">
-                        <form action="categories.php" method="post">
+                        <form action="includes/controllers.php" method="post">
                             <div class="form-group">
                                 <label for="cat_name">Category title</label>
                                 <?php 
@@ -67,6 +52,7 @@
 <?php 
     $query = "SELECT * FROM categories";
     $result = mysqli_query($conn,$query);
+    DeleteCategories();
 ?>
 
         <div class="col-sm-7">

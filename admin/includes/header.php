@@ -27,3 +27,4 @@ include('../users/includes/database.php');
 </head>
 
 <body class="bg-dark">
+<?php include('includes/nav.php'); ?>
