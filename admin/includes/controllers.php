@@ -33,6 +33,13 @@ if(isset($_POST['editPostSubmit'])){
     post_tags='{$_POST['postTags']}',
     post_comments='{$_POST['postComments']}',
     post_status='{$_POST['postStatus']}',
+    post_category_id= '{$_POST['selectCategory']}'";
+
+    if (!empty($_FILES['postImage']['tmp_name'])) {
+        $image= addslashes(file_get_contents($_FILES['postImage']['tmp_name']));
+        $query .= ", post_img='{$image}'";
+    }
+    $query .= " WHERE post_id=".$_POST['postId'];
     mysqli_query($conn,$query);
     if ($err= mysqli_error($conn)) {
         echo $query;
