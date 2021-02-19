@@ -50,8 +50,7 @@
         </div>
 
 <?php 
-    $query = "SELECT * FROM categories";
-    $result = mysqli_query($conn,$query);
+    $categories = getCategories();
     DeleteCategories();
 ?>
 
@@ -66,14 +65,14 @@
                 </thead>
                 <tbody>
                     <?php 
-                        while ($row = mysqli_fetch_assoc($result)) {
+                        foreach ($categories as $value) {
                     ?>
                     <tr>
-                        <td><?php echo $row['cat_id'] ?></td>
-                        <td><?php echo $row['cat_title'] ?></td>
+                        <td><?php echo $value['cat_id'] ?></td>
+                        <td><?php echo  $value['cat_title'] ?></td>
                         <td>
-                            <a class="btn btn-danger" href="?deleteid=<?php echo $row['cat_id'] ?>">Delete</a>
-                            <a class="btn btn-warning" href="?edit=<?php echo $row['cat_id'] ?>">Edit</a>
+                            <a class="btn btn-danger" href="?deleteid=<?php echo $value['cat_id'] ?>">Delete</a>
+                            <a class="btn btn-warning" href="?edit=<?php echo $value['cat_id'] ?>">Edit</a>
                         </td>
                     </tr> 
                     <?php

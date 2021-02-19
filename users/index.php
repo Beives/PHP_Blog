@@ -30,7 +30,8 @@
                 </p>
                 <p> Posted on <?php echo $row['post_date'] ?></p>
                 <hr>
-                <img class="img-fluid" src="http://placehold.it/900x300" alt="">
+                
+                <img class="img-fluid" <?php echo 'src="data:image/jpg;base64,'.base64_encode( $row['post_img'] ).'"'?> >
                 <hr>
                 <p><?php echo $row['post_content'] ?></p>
                 <a class="btn btn-primary" href="#">Read More</a>

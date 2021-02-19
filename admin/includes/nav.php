@@ -51,8 +51,8 @@
                             Posts
                         </button>
                         <div class="dropdown-menu w-100" aria-labelledby="dropdownMenuUsers">
-                            <a class="dropdown-item text-center" href="viewposts.php">View all posts</a>
-                            <a class="dropdown-item text-center" href="newpost.php">New post</a>
+                            <a class="dropdown-item text-center" href="posts.php">View all posts</a>
+                            <a class="dropdown-item text-center" href="posts.php?source=new">New post</a>
                         </div>
                     </div>
 

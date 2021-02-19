@@ -1,4 +1,4 @@
-<?php include('../includes/header.php')?>
+<?php include('includes/header.php')?>
 
 
 <div class="col-xl-11 bg-light">
