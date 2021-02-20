@@ -1,15 +1,16 @@
 <?php 
-include('../../users/includes/database.php');
+include('database.php');
+
 if (isset($_POST['updateSubmit'])) {
     $updateQuery = "UPDATE categories SET cat_title='{$_POST['cat_update_name']}' WHERE cat_id = {$_POST['updateId']}";
     mysqli_query($conn,$updateQuery);
-    header('LOCATION: ../categories.php');
+    header('LOCATION: ../admin/categories.php');
 }
 
 if (isset($_POST['uploadSubmit'])) {
     $query = "INSERT INTO categories (cat_title) VALUES ('".$_POST['cat_name']."')";
     mysqli_query($conn,$query);
-    header('LOCATION: ../categories.php');
+    header('LOCATION: ../admin/categories.php');
 }
 
 if(isset($_POST['newPostSubmit'])){
@@ -20,11 +21,10 @@ if(isset($_POST['newPostSubmit'])){
     if ($err= mysqli_error($conn)) {
         echo $err;
     }
-    header('LOCATION: ../posts.php');
+    header('LOCATION: ../admin/posts.php');
 }
 
 if(isset($_POST['editPostSubmit'])){
-    $image = addslashes(file_get_contents($_FILES['postImage']['tmp_name']));
     $query= "UPDATE post SET 
     post_title='{$_POST['postTitle']}',
     post_author='{$_POST['postAuthor']}',
@@ -44,13 +44,7 @@ if(isset($_POST['editPostSubmit'])){
     if ($err= mysqli_error($conn)) {
         echo $query;
         echo $err;
-    }else
-        header('LOCATION: ../posts.php');
+    }else 
+        header('LOCATION: ../admin/posts.php');
 }
-
 ?>
-</body>
-</html>
-
-
-

@@ -5,12 +5,12 @@
                 <div class="card">
                     <div class="card-body">
                     <h4 class="card-title">Blog Search</h4>
-                        <form action="" method="post">
+                        <form action="index.php?" method="get">
                             <div class="input-group mb-3">
                                 <div class="input-group-prepend">
                                     <input type="submit" class="btn btn-outline-secondary" value="Search">
                                 </div>
-                                <input type="text" name="search" class="form-control" aria-describedby="button-addon1">
+                                <input type="text" name="postSearch" class="form-control">
                             </div>
                         </form>
                     </div>
@@ -18,7 +18,7 @@
 
                 <div class="card">
                     <div class="card-body">
-                        
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate quo odit excepturi labore asperiores aliquam possimus animi omnis soluta beatae, sint nisi dolores nostrum! Nostrum alias vitae aperiam illo aut.
                     </div>
                     <!-- /.row -->
                 </div>

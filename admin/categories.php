@@ -1,6 +1,5 @@
 <?php 
     include('includes/header.php');
-    include('includes/functions.php');
 ?>
 
 <div class="col-xl-11 bg-light">
@@ -10,7 +9,7 @@
                 <div class="card text-center">
                     <div class="card-header">Add new category</div>
                     <div class="card-body">
-                        <form action="includes/controllers.php" method="post">
+                        <form action="../controllers/controllers.php" method="post">
                             <div class="form-group">
                                 <label for="cat_name">Category title</label>
                                 <input type="text" class="form-control" name="cat_name">
@@ -26,7 +25,7 @@
                 <div class="card text-center">
                     <div class="card-header">Edit category</div>
                     <div class="card-body">
-                        <form action="includes/controllers.php" method="post">
+                        <form action="../controllers/controllers.php" method="post">
                             <div class="form-group">
                                 <label for="cat_name">Category title</label>
                                 <?php 

@@ -1,6 +1,5 @@
 <?php 
     include('includes/header.php');
-    include('includes/functions.php');
 ?>
 <div class="col-xl-11 bg-light container-xl">
 
@@ -14,7 +13,7 @@ switch ($source) {
     case 'new':
         $categories = getCategories();
     ?>
-        <form action="includes/controllers.php" method="post" enctype="multipart/form-data">
+        <form action="../controllers/controllers.php" method="post" enctype="multipart/form-data">
             <div class="form-row">
                 <div class="form-group col-sm-4">
                     <label for="selectCategory">Select category</label>
@@ -65,7 +64,7 @@ switch ($source) {
         $categories = getCategories();
         $post = getPostById($_GET['editId']);
         ?>
-        <form action="includes/controllers.php" method="post" enctype="multipart/form-data">
+        <form action="../controllers/controllers.php" method="post" enctype="multipart/form-data">
             <input type="hidden" name="postId" value="<?php echo $post['post_id'] ?>" />
             <input type="hidden" name="postComments" value="<?php echo $post['post_comments'] ?>">
             <div class="form-row">
@@ -145,6 +144,7 @@ switch ($source) {
                 <?php 
                 $posts = getPosts();
                 foreach ($posts as $row) {
+                    $cat_row=getCategoryById($row['post_category_id']);
                 ?>
                 <tr>
                     <td><?php echo $row['post_id'] ?></td>
@@ -152,9 +152,6 @@ switch ($source) {
                     <td><?php echo $row['post_title'] ?></td>
                     <td>
                         <?php 
-                            $cat_query = "SELECT cat_title FROM categories WHERE cat_id=".$row['post_category_id'];
-                            $cat_result = mysqli_query($conn,$cat_query);
-                            $cat_row = mysqli_fetch_array($cat_result);
                             echo $cat_row['cat_title'];
                         ?>
                     </td>
