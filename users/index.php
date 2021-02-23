@@ -10,6 +10,10 @@
             if (isset($_GET['postSearch']) && $_GET['postSearch'] != ''){
                 $ordered_post = getSearchedPosts();
             }
+            elseif (isset($_GET['category'])) 
+                $ordered_post = getPostByCategory($_GET['category']);
+            elseif(isset($_GET['author']))
+                $ordered_post = getPostByAuthor($_GET['author']);
             else
                 $ordered_post = getPostOrdered();
 
@@ -18,18 +22,17 @@
                     
             ?>
                 <h2>
-                    <a href="#"><?php echo $row['post_title'] ?></a>
+                    <a href="post.php?post_id=<?php echo $row['post_id']?>"><?php echo $row['post_title'] ?></a>
                 </h2>
                 <p class="lead">
-                    by <a href="index.php"><?php echo $row['post_author'] ?></a>
+                    by <a href="index.php?author=<?php echo $row['post_author'] ?>"><?php echo $row['post_author'] ?></a>
                 </p>
                 <p> Posted on <?php echo $row['post_date'] ?></p>
                 <hr>
-                
                 <img class="img-fluid" <?php echo 'src="data:image/jpg;base64,'.base64_encode( $row['post_img'] ).'"'?> >
                 <hr>
-                <p><?php echo $row['post_content'] ?></p>
-                <a class="btn btn-primary" href="#">Read More</a>
+                <p><?php echo substr($row['post_content'],0,75) ?>...</p>
+                <a class="btn btn-primary" href="post.php?post_id=<?php echo $row['post_id']?>">Read More</a>
                 <hr><hr>
             <?php 
                 }//if 
@@ -45,10 +48,7 @@
                 }
             } //foreach
             ?>
-
-                
-
-            </div>
+            </div><!-- col-md-8 -->
 
 <?php include('includes/sidebar.php') ?>
 <?php include('includes/footer.php') ?>

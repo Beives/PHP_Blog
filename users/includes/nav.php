@@ -10,7 +10,7 @@
               foreach ($categories as $value) {
                ?>
               <li class="nav-item active">
-                <a class="nav-link" href="#"><?php echo $value['cat_title'] ?></a>
+                <a class="nav-link" href="index.php?category=<?php echo $value['cat_id'] ?>"><?php echo $value['cat_title'] ?></a>
               </li>
               <?php
               }

@@ -47,7 +47,7 @@ function getPostById($id){
 
 function getSearchedPosts(){
     global $conn;
-    $query = "SELECT * FROM post WHERE post_tags LIKE '%{$_GET['postSearch']}%' ORDER BY post_id DESC";
+    $query = "SELECT * FROM post WHERE post_tags LIKE '%{$_GET['postSearch']}%' ORDER BY post_date DESC";
     $result = mysqli_query($conn, $query);
     $posts = array();
     if(mysqli_num_rows($result) == 0){
@@ -72,6 +72,41 @@ function getPostOrdered(){
         array_push($posts,$row);
     }
     return $posts;
+}
+
+function getPostByAuthor($author){
+    global $conn;
+    $query = "SELECT * FROM post WHERE post_author LIKE '%{$author}%' ORDER BY post_date DESC";
+    $result = mysqli_query($conn,$query);
+    $posts = array();
+    if(mysqli_num_rows($result) == 0){
+        $nullQuery = "SELECT * FROM post WHERE post_id = 9999999";
+        $nullResult = mysqli_query($conn,$nullQuery);
+        array_push($posts,mysqli_fetch_array($nullResult));
+        return $posts;
+    }else{
+        while ($row = mysqli_fetch_array($result)) {
+            array_push($posts,$row);
+        }
+        return $posts;
+    }
+}
+function getPostByCategory($category){
+    global $conn;
+    $query = "SELECT * FROM post WHERE post_category_id=".$category;
+    $result = mysqli_query($conn,$query);
+    $posts = array();
+    if(mysqli_num_rows($result) == 0){
+        $nullQuery = "SELECT * FROM post WHERE post_id = 9999999";
+        $nullResult = mysqli_query($conn,$nullQuery);
+        array_push($posts,mysqli_fetch_array($nullResult));
+        return $posts;
+    }else{
+        while ($row = mysqli_fetch_array($result)) {
+            array_push($posts,$row);
+        }
+        return $posts;
+    }
 }
 
 function deletePost(){

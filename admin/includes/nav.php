@@ -31,7 +31,7 @@
 
             <div class="col-xl-1">
                 <div class="nav flex-column">
-                    <a class="nav-link btn btn-secondary" href="#v-pills-home">Dashboard</a>
+                    <a class="nav-link btn btn-secondary" href="/">Dashboard</a>
 
                     <div class="dropdown">
                         <button class="btn btn-secondary dropdown-toggle w-100" type="button" id="dropdownMenuPosts" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
