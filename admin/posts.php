@@ -33,15 +33,12 @@ switch ($source) {
                 </div>
             </div>
             <div class="form-row">
-                <div class="form-group col-sm-4">
-                    <label for="postStatus">Post status</label>
-                    <input type="text" class="form-control" name="postStatus" placeholder="Post status here">
-                </div>
-                <div class="form-group col-sm-5">
+
+                <div class="form-group col-sm-8">
                     <label for="postTags">Post tags</label>
                     <input type="text" class="form-control" name="postTags" placeholder="Post tags here">
                 </div>
-                <div class="form-group col-sm-3">
+                <div class="form-group col-sm-4">
                     <label for="postDate">Pick post date</label>
                     <input value="<?php echo date("Y-m-d") ?>" type="date" name="postDate" max="3000-12-31" min="2010-01-01" class="form-control">
                 </div>
@@ -91,15 +88,11 @@ switch ($source) {
                 </div>
             </div>
             <div class="form-row">
-                <div class="form-group col-sm-4">
-                    <label for="postStatus">Post status</label>
-                    <input value="<?php echo $post['post_status'] ?>" type="text" class="form-control" name="postStatus" placeholder="Post status here">
-                </div>
-                <div class="form-group col-sm-5">
+                <div class="form-group col-sm-8">
                     <label for="postTags">Post tags</label>
                     <input value="<?php echo $post['post_tags'] ?>" type="text" class="form-control" name="postTags" placeholder="Post tags here">
                 </div>
-                <div class="form-group col-sm-3">
+                <div class="form-group col-sm-4">
                     <label for="postDate">Pick post date</label>
                     <input value="<?php echo $post['post_date'] ?>" type="date" name="postDate" max="3000-12-31" min="2010-01-01" class="form-control">
                 </div>
@@ -132,7 +125,6 @@ switch ($source) {
                     <th>Author</th>
                     <th>Title</th>
                     <th>Category</th>
-                    <th>Status</th>
                     <th>Image</th>
                     <th>Tags</th>
                     <th>Comments</th>
@@ -155,7 +147,6 @@ switch ($source) {
                             echo $cat_row['cat_title'];
                         ?>
                     </td>
-                    <td><?php echo $row['post_status'] ?></td>
                     <td>
                         <?php
                             echo '<img class="img-fluid" src="data:image/jpg;base64,'.base64_encode( $row['post_img'] ).'"/>';

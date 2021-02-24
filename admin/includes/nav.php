@@ -44,7 +44,7 @@
                     </div>
 
                     <a class="nav-link btn btn-secondary" href="categories.php">Categories</a>
-                    <a class="nav-link btn btn-secondary" href="#v-pills-settings">Comments</a>
+                    <a class="nav-link btn btn-secondary" href="comments.php">Comments</a>
 
                     <div class="dropdown">
                         <button class="btn btn-secondary dropdown-toggle w-100" type="button" id="dropdownMenuUsers" data-toggle="dropdown" aria-haspopup="true">
