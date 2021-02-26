@@ -5,7 +5,6 @@
 
             <!-- Blog Entries Column -->
             <div class="col-md-8">
-
             <?php 
             if (isset($_GET['postSearch']) && $_GET['postSearch'] != ''){
                 $ordered_post = getSearchedPosts();
@@ -19,7 +18,6 @@
 
             foreach ($ordered_post as $row) {
                 if ($row['post_id'] != 9999999) {
-                    
             ?>
                 <h2>
                     <a href="post.php?post_id=<?php echo $row['post_id']?>"><?php echo $row['post_title'] ?></a>
@@ -49,6 +47,7 @@
             } //foreach
             ?>
             </div><!-- col-md-8 -->
-
+        
 <?php include('includes/sidebar.php') ?>
+</div>
 <?php include('includes/footer.php') ?>

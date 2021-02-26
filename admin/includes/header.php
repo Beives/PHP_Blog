@@ -1,7 +1,13 @@
 <?php 
 ob_start();
+session_start();
 include('../controllers/database.php');
 include('../controllers/functions.php');
+
+if (!isset($_SESSION['user_role'])) 
+    header("LOCATION: ../users");
+elseif($_SESSION['user_role'] != 'admin')
+    header("LOCATION: ../users");
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -14,7 +20,7 @@ include('../controllers/functions.php');
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>SB Admin - Bootstrap Admin Template</title>
+    <title>Blog Admin</title>
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link rel="stylesheet" href="style.css">

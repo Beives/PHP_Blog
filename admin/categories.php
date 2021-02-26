@@ -1,5 +1,7 @@
 <?php 
     include('includes/header.php');
+    $categories = getCategories();
+    DeleteCategories();
 ?>
 
 <div class="col-xl-11 bg-light">
@@ -47,12 +49,7 @@
             </div>
 
         </div>
-
-<?php 
-    $categories = getCategories();
-    DeleteCategories();
-?>
-
+    
         <div class="col-sm-7">
             <table class="table table-bordered">
                 <thead>
@@ -70,7 +67,7 @@
                         <td><?php echo $value['cat_id'] ?></td>
                         <td><?php echo  $value['cat_title'] ?></td>
                         <td>
-                            <a class="btn btn-danger" href="?deleteid=<?php echo $value['cat_id'] ?>">Delete</a>
+                            <a onclick="javascript:return confirm('Are you sure?');" class="btn btn-danger" href="?deleteid=<?php echo $value['cat_id'] ?>">Delete</a>
                             <a class="btn btn-warning" href="?edit=<?php echo $value['cat_id'] ?>">Edit</a>
                         </td>
                     </tr> 

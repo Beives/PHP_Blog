@@ -1,4 +1,5 @@
 <?php
+session_start();
 include('../controllers/database.php');
 include('../controllers/functions.php');
 ?>

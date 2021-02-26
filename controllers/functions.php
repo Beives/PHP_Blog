@@ -107,22 +107,29 @@ function getPostByCategory($category){
 function deletePost(){
     global $conn;
     if (isset($_GET['deletePostId'])) {
-        $deleteQuery="DELETE FROM post WHERE post_id=".$_GET['deletePostId'];
+        $deleteQuery="DELETE FROM post WHERE post_id={$_GET['deletePostId']}";
         mysqli_query($conn,$deleteQuery);
+        $deleteCommentsQuery = "DELETE FROM comments WHERE commented_post={$_GET['deletePostId']}";
+        mysqli_query($conn,$deleteCommentsQuery);
         header("LOCATION: ../admin/posts.php");
     }
 }
 //comments
-function deleteComment(){
+function deleteComment($location){
     global $conn;
     if (isset($_GET['deleteCommentId'])) {
         $deleteQuery="DELETE FROM comments WHERE comment_id=".$_GET['deleteCommentId'];
         mysqli_query($conn,$deleteQuery);
+
         $result = mysqli_query($conn, "SELECT post_comments FROM post WHERE post_id={$_GET['affectedPost']}");
         $row = mysqli_fetch_array($result);
         $affectedPostComments = $row['post_comments'] - 1;
         $updatePostComments = mysqli_query($conn, "UPDATE post SET post_comments='{$affectedPostComments}' WHERE post_id={$_GET['affectedPost']}");
-        header("LOCATION: ../admin/comments.php");
+
+        if ($location == "admin") 
+            header("LOCATION: ../admin/comments.php");
+        else if($location == "users")
+            header("LOCATION: ?userPage=profile&userId={$_GET['userId']}");
     }
 }
 function getComments(){
@@ -145,6 +152,61 @@ function getCommentsByPostId($postId){
         array_push($comments,$row);
     }
     return $comments;
+}
+function getCommentsByUser($userId){
+    global $conn;
+    $query = "SELECT * FROM comments WHERE comment_author={$userId}";
+    $result = mysqli_query($conn,$query);
+    $comments=array();
+    
+    while ($row = mysqli_fetch_array($result)) {
+        array_push($comments,$row);
+    }
+    return $comments;
+}
 
+//users
+function getUsers(){
+    global $conn;
+    $query = "SELECT * FROM users";
+    $result = mysqli_query($conn,$query);
+    $users = array();
+    while($row = mysqli_fetch_array($result)){
+        array_push($users,$row);
+    }
+    return $users;
+}
+function getUserById($id){
+    global $conn;
+    $query = "SELECT * FROM users WHERE user_id=".$id;
+    $result = mysqli_query($conn,$query);
+    return mysqli_fetch_array($result);
+}
+function deleteUser($location){
+    global $conn;
+    if (isset($_GET['deleteUserId'])) {
+        $deleteQuery="DELETE FROM users WHERE user_id=".$_GET['deleteUserId'];
+        mysqli_query($conn,$deleteQuery);
+
+        if ($location = "admin") 
+            header("LOCATION: ../admin/users.php");
+        else if($location = "users"){
+            session_destroy();
+            header("LOCATION: ../users/");
+        }
+    }
+}
+function modifyRole(){
+    global $conn;
+    if (isset($_GET['removeAdmin'])) {
+        $updateQuery = "UPDATE users SET user_role='user' WHERE user_id = {$_GET['removeAdmin']}";
+        mysqli_query($conn,$updateQuery);
+        header('LOCATION: ../admin/users.php');
+    }
+    else if (isset($_GET['makeAdmin'])) {
+        $updateQuery = "UPDATE users SET user_role='admin' WHERE user_id = {$_GET['makeAdmin']}";
+        mysqli_query($conn,$updateQuery);
+        header('LOCATION: ../admin/users.php');
+    }
 }
 ?>

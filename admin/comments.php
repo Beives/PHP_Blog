@@ -1,8 +1,8 @@
 <?php 
     include('includes/header.php');
-    deleteComment();
+    deleteComment("admin");
 ?>
-<div class="col-xl-11 bg-light container-xl">
+<div class="col-xl-11 bg-light">
     <table class="table table-bordered">
         <thead>
             <tr>
@@ -32,7 +32,7 @@
                 <td><?php echo $comm['comment_author']?></td>
                 <td><?php echo $comm['comment_date']?></td>
                 <td><?php echo $comm['comment_content']?></td>
-                <td><a class="btn btn-danger" href="?affectedPost=<?php echo $post['post_id']?>&deleteCommentId=<?php echo $comm['comment_id'] ?>">Delete</a></td>
+                <td><a onclick="javascript:return confirm('Are you sure?');" class="btn btn-danger" href="?affectedPost=<?php echo $post['post_id']?>&deleteCommentId=<?php echo $comm['comment_id'] ?>">Delete</a></td>
             </tr>
             <?php
                 }

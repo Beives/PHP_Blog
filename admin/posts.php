@@ -1,7 +1,7 @@
 <?php 
     include('includes/header.php');
 ?>
-<div class="col-xl-11 bg-light container-xl">
+<div class="col-xl-11 bg-light">
 
 <?php 
 deletePost();
@@ -156,7 +156,7 @@ switch ($source) {
                     <td><?php echo $row['post_comments'] ?></td>
                     <td><?php echo $row['post_date'] ?></td>
                     <td>
-                        <a class="btn btn-danger" href="?deletePostId=<?php echo $row['post_id'] ?>">Delete</a>
+                        <a onclick="javascript:return confirm('Are you sure?');" class="btn btn-danger" href="?deletePostId=<?php echo $row['post_id'] ?>">Delete</a>
                         <a class="btn btn-warning" href="?source=edit&editId=<?php echo $row['post_id'] ?>">Edit</a>
                     </td>
                 </tr>

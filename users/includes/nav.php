@@ -14,7 +14,11 @@
               </li>
               <?php
               }
-              ?>
+              if (isset($_SESSION['user_role']) && $_SESSION['user_role'] == "admin") { ?>
+                <li class="nav-item active">
+                  <a class="nav-link" href="../admin/">Admin</a>
+                </li>
+              <?php }?>
             </ul>
           </div>
     </nav>
