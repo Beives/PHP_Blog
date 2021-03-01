@@ -1,7 +1,11 @@
 <?php
 include('includes/header.php');
-deleteUser("users");
-deleteComment("users");
+
+if(isset($_SESSION['user_id']) && $_SESSION['user_id'] == $_GET['userId']){
+    deleteUser("users");
+    deleteComment("users");
+}
+
 $currentPage = $_GET['userPage'];
 
 switch ($currentPage) {
@@ -29,7 +33,7 @@ switch ($currentPage) {
                     </table>
                 </div>
                 <div class="row justify-content-center">
-                    <a onclick="javascript:return confirm('Are you sure?');"  class="col-sm-4 btn btn-danger" href="?deleteUserId=<?php echo $_SESSION['user_id']?>">Delete profile</a>
+                    <a onclick="javascript:return confirm('Are you sure?');"  class="col-sm-4 btn btn-danger" href="?userId=<?php echo $_SESSION['user_id']?>&deleteUserId=<?php echo $_SESSION['user_id']?>">Delete profile</a>
                     <a class="col-sm-4 ml-3 btn btn-warning" href="?userPage=editProfile">Edit profile</a>
                 </div>
             </div>

@@ -1,6 +1,8 @@
 <?php 
 include('includes/header.php');
-deleteUser("admin");
+
+if(isset($_SESSION['user_role']) && $_SESSION['user_role'] == "admin")
+    deleteUser("admin");
 
 $user = getUserById($_SESSION['user_id']);
 $page = "";

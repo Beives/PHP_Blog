@@ -25,6 +25,13 @@ function getCategoryById($id){
     $cat_result = mysqli_query($conn,$cat_query);
     return mysqli_fetch_array($cat_result);
 }
+function countCategories(){
+    global $conn;
+    $query = "SELECT COUNT(*) FROM categories";
+    $result = mysqli_query($conn,$query);
+    $count = mysqli_fetch_array($result);
+    return $count[0];
+}
 
 //posts
 function getPosts(){
@@ -60,9 +67,9 @@ function getSearchedPosts(){
         return $posts;
     }
 }
-function getPostOrdered(){
+function getPostOrdered($page, $pagination){
     global $conn;
-    $query = "SELECT * FROM post WHERE post_id NOT IN (0) ORDER BY post_date DESC";
+    $query = "SELECT * FROM post WHERE post_id NOT IN (0) ORDER BY post_date DESC LIMIT {$page}, {$pagination}";
     $result = mysqli_query($conn, $query);
     $posts= array();
     while ($row = mysqli_fetch_array($result)) {
@@ -114,6 +121,13 @@ function deletePost(){
         header("LOCATION: ../admin/posts.php");
     }
 }
+function countPosts(){
+    global $conn;
+    $query = "SELECT COUNT(*) FROM post";
+    $result = mysqli_query($conn,$query);
+    $count = mysqli_fetch_array($result);
+    return $count[0] - 1;
+}
 //comments
 function deleteComment($location){
     global $conn;
@@ -164,6 +178,13 @@ function getCommentsByUser($userId){
     }
     return $comments;
 }
+function countComments(){
+    global $conn;
+    $query = "SELECT COUNT(*) FROM comments";
+    $result = mysqli_query($conn,$query);
+    $count = mysqli_fetch_array($result);
+    return $count[0];
+}
 
 //users
 function getUsers(){
@@ -191,6 +212,7 @@ function deleteUser($location){
         if ($location = "admin") 
             header("LOCATION: ../admin/users.php");
         else if($location = "users"){
+            session_unset();
             session_destroy();
             header("LOCATION: ../users/");
         }
@@ -208,5 +230,12 @@ function modifyRole(){
         mysqli_query($conn,$updateQuery);
         header('LOCATION: ../admin/users.php');
     }
+}
+function countUsers(){
+    global $conn;
+    $query = "SELECT COUNT(*) FROM users";
+    $result = mysqli_query($conn,$query);
+    $count = mysqli_fetch_array($result);
+    return $count[0];
 }
 ?>

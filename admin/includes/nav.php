@@ -24,7 +24,7 @@
                     </div>
                 </li>
                 <li class="nav-item btn btn-secondary">
-                    <a class="nav-link text-white " href="../users/">Main page</a>
+                    <a class="nav-link text-white " href="../users/index.php">Main page</a>
                 </li>
             </ul>
         </nav>
@@ -33,7 +33,7 @@
 
             <div class="col-xl-1 p-1">
                 <div class="nav flex-column">
-                    <a class="nav-link btn btn-secondary mb-1" href="/">Dashboard</a>
+                    <a class="nav-link btn btn-secondary mb-1" href="index.php">Dashboard</a>
 
                     <a class="nav-link btn btn-secondary mb-1" href="users.php">Users</a>
 

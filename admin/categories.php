@@ -1,7 +1,8 @@
 <?php 
     include('includes/header.php');
     $categories = getCategories();
-    DeleteCategories();
+    if(isset($_SESSION['user_role']) && $_SESSION['user_role'] == "admin")
+        DeleteCategories();
 ?>
 
 <div class="col-xl-11 bg-light">

@@ -4,7 +4,9 @@
 <div class="col-xl-11 bg-light">
 
 <?php 
-deletePost();
+if(isset($_SESSION['user_role']) && $_SESSION['user_role'] == "admin")
+    deletePost();
+    
 $source="";
 if (isset($_GET['source'])) 
     $source= $_GET['source'];
@@ -49,7 +51,7 @@ switch ($source) {
             </div>
             <div class="form-group">
                 <label for="postContent">Post content</label>
-                <textarea class="form-control" name="postContent" rows="5"></textarea>
+                <textarea id="editor" class="form-control" name="postContent" rows="15"></textarea>
             </div>
             <div class="text-center">
                 <button type="submit" name="newPostSubmit" class="btn btn-primary">Submit</button>
@@ -108,7 +110,7 @@ switch ($source) {
             </div>
             <div class="form-group">
                 <label for="postContent">Post content</label>
-                <textarea class="form-control" name="postContent" rows="5"><?php echo $post['post_content'] ?></textarea>
+                <textarea class="form-control" id="editor" name="postContent" rows="5"><?php echo $post['post_content'] ?></textarea>
             </div>
             <div class="text-center">
                 <button type="submit" name="editPostSubmit" class="btn btn-primary">Submit</button>
@@ -130,6 +132,7 @@ switch ($source) {
                     <th>Comments</th>
                     <th>Date</th>
                     <th>Actions</th>
+                    <th>View post</th>
                 </tr>
             </thead>
             <tbody>
@@ -159,6 +162,7 @@ switch ($source) {
                         <a onclick="javascript:return confirm('Are you sure?');" class="btn btn-danger" href="?deletePostId=<?php echo $row['post_id'] ?>">Delete</a>
                         <a class="btn btn-warning" href="?source=edit&editId=<?php echo $row['post_id'] ?>">Edit</a>
                     </td>
+                    <td><a href="../../users/post.php?post_id=<?php echo $row['post_id'] ?>">Go to the post</a></td>
                 </tr>
                 <?php } ?>
             </tbody>
@@ -169,4 +173,12 @@ switch ($source) {
     ?>
 </div>
     
+
+<script>
+    ClassicEditor
+        .create( document.querySelector( '#editor' ) )
+        .catch( error => {
+            console.error( error );
+        } );
+</script>
 <?php include('includes/footer.php')?>

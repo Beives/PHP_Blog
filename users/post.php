@@ -9,7 +9,7 @@ if ($_GET['post_id'] == 0)
             <div class="col-md-8">
                 <h1><?php echo $post['post_title'] ?></h1>
                 <p class="lead">
-                    by <a href="#"><?php echo $post['post_author'] ?></a>
+                    by <a href="index.php?author=<?php echo $post['post_author'] ?>"><?php echo $post['post_author'] ?></a>
                 </p>
                 <hr>
                 <p>Posted on <?php echo $post['post_date'] ?></p>

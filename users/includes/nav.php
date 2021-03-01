@@ -18,7 +18,13 @@
                 <li class="nav-item active">
                   <a class="nav-link" href="../admin/">Admin</a>
                 </li>
-              <?php }?>
+              <?php 
+            
+                if (isset($_GET['post_id'])) { ?>
+                  <li class="nav-item active">
+                    <a class="nav-link" href="../admin//posts.php?source=edit&editId=<?php echo $_GET['post_id'] ?>">Edit post</a>
+                  </li>
+                <?php } } ?>
             </ul>
           </div>
     </nav>

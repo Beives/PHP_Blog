@@ -44,7 +44,7 @@
                     <div class="card-body">
                         <h5 class="card-title">Welcome <?php echo $_SESSION['name'] ?></h5>
                         <hr>
-                        <a href="user.php?userPage=profile">Profile</a>
+                        <a href="user.php?userPage=profile&userId=<?php echo $_SESSION['user_id'] ?>">Profile</a>
 
                         <form action="../controllers/controllers.php" method="post">
                             <input class="btn btn-outline-secondary" type="submit" value="Logout" name="logoutSubmit">
@@ -52,12 +52,4 @@
                     </div>
                 </div>
             <?php } ?>
-
-                <div class="card">
-                    <div class="card-body">
-                        <h4 class="card-title">Side Widget Well</h4>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore, perspiciatis adipisci accusamus laudantium odit aliquam repellat tempore quos aspernatur vero.</p>
-                    </div>
-                </div>
-
             </div>

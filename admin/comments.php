@@ -1,6 +1,7 @@
 <?php 
     include('includes/header.php');
-    deleteComment("admin");
+    if(isset($_SESSION['user_role']) && $_SESSION['user_role'] == "admin")
+        deleteComment("admin");
 ?>
 <div class="col-xl-11 bg-light">
     <table class="table table-bordered">
